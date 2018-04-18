@@ -10,6 +10,7 @@ module.exports = ({ router, db }) => {
   /**
    * This function comment is parsed by doctrine
    * @route GET /tasks-management/task
+   * @name getTask
    * @group tasksManagement::task - Operations about task
    * @param {string} name.query.required - name
    * @returns {Task.model} 200 - A Task object

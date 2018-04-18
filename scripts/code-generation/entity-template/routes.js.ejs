@@ -1,0 +1,21 @@
+const Controller = require('./controller');
+const Service = require('./service');
+
+module.exports = ({ router, db }) => {
+  const service = new Service(db);
+  const controller = new Controller(service);
+
+  const route = router.route('/<%= entity %>');
+
+  /**
+   * This function comment is parsed by doctrine
+   * @route GET /<%= domain %>/<%= entity %>
+   * @name get<%= entityInPascalCase %>
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @param {string} name.query.required - name
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+  route.get((...args) => controller.get(...args));
+
+};

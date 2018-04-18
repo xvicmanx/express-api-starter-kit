@@ -10,6 +10,8 @@
     "start:server": "nodemon scripts/start-server.js",
     "start-and-share:development": "npm-run-all --parallel start share:development",
     "share:development": "node scripts/share-development.js",
+    "generate:domain": "node scripts/generate-domain.js",
+    "generate:entity": "node scripts/generate-entity.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "chalk": "^2.4.0",
+    "ejs": "^2.5.8",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -30,7 +33,9 @@
     "eslint-plugin-react": "^7.4.0",
     "eslint-watch": "^3.1.4",
     "express-swagger-generator": "^1.1.0",
+    "fs-extra": "^5.0.0",
     "localtunnel": "^1.9.0",
+    "minimist": "^1.2.0",
     "nodemon": "^1.17.3",
     "npm-run-all": "^4.1.2"
   }
