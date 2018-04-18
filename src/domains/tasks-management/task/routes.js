@@ -9,8 +9,8 @@ module.exports = ({ router, db }) => {
 
   /**
    * This function comment is parsed by doctrine
-   * @route GET /task
-   * @group task - Operations about task
+   * @route GET /tasks-management/task
+   * @group tasksManagement::task - Operations about task
    * @param {string} name.query.required - name
    * @returns {Task.model} 200 - A Task object
    * @returns {Error}  default - Unexpected error
@@ -19,8 +19,8 @@ module.exports = ({ router, db }) => {
 
   /**
    * This function comment is parsed by doctrine
-   * @route POST /task
-   * @group task - Operations about task
+   * @route POST /tasks-management/task
+   * @group tasksManagement::task - Operations about task
    * @param {string} name.query.required - name
    * @returns {Task.model} 200 - A Task object
    * @returns {Error}  default - Unexpected error

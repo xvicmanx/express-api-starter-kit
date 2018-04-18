@@ -1,9 +1,8 @@
 // Helpers file
 const DynRequire = require('dyn-require');
-const path = require('path');
 
 const forEachFile = (dir, str, cb) => {
-  const modules = new DynRequire(path.join(__dirname, dir));
+  const modules = new DynRequire(dir);
   const filesMap = modules.requireAllEx();
   Object.entries(filesMap).forEach((entry) => {
     if (entry[0].indexOf(str) > -1) {

@@ -1,14 +1,15 @@
 const express = require('express');
+const path = require('path');
 const swaggerGenerator = require('express-swagger-generator');
 const { forEachFile, getAPIVersion } = require('./helpers');
 const swaggerConfig = require('./swagger.config');
 
 const forEachRoutesFile = (cb) => {
-  forEachFile('/../domains/', 'routes', cb);
+  forEachFile(path.join(__dirname, '/../domains/'), 'setupRoutes', cb);
 };
 
 const forEachModelFile = (cb) => {
-  forEachFile('/../domains/', 'model', cb);
+  forEachFile(path.join(__dirname, '/../domains/'), 'model', cb);
 };
 
 const setupDB = () => {
