@@ -1,0 +1,37 @@
+{
+  "name": "express-api-starter-kit",
+  "version": "0.0.1",
+  "description": "A boiler plate project to start coding your Express API right away.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "esw --color src/ scripts/",
+    "lint:watch": "npm run lint -- --watch --fix",
+    "start": "npm-run-all --parallel start:server lint:watch",
+    "start:server": "nodemon scripts/start-server.js",
+    "start-and-share:development": "npm-run-all --parallel start share:development",
+    "share:development": "node scripts/share-development.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "dyn-require": "0.0.3",
+    "express": "^4.16.3",
+    "express-swagger-generator": "^1.1.0",
+    "open": "0.0.5"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-watch": "^3.1.4",
+    "express-swagger-generator": "^1.1.0",
+    "localtunnel": "^1.9.0",
+    "nodemon": "^1.17.3",
+    "npm-run-all": "^4.1.2"
+  }
+}
