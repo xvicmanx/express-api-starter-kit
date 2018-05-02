@@ -10,21 +10,15 @@ module.exports = ({ router, db }) => {
   /**
    * This function comment is parsed by doctrine
    * @route GET /tasks-management/task
-   * @name getTask
-   * @group tasksManagement::task - Operations about task
-   * @param {string} name.query.required - name
+   * @operationId retrieveTasks
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group tasksManagement.Task-Operations about task
+   * @summary Retrieves some tasks
+   *
+   * @param {string} where.query - conditions
    * @returns {Task.model} 200 - A Task object
    * @returns {Error}  default - Unexpected error
    */
-  route.get((...args) => controller.get(...args));
-
-  /**
-   * This function comment is parsed by doctrine
-   * @route POST /tasks-management/task
-   * @group tasksManagement::task - Operations about task
-   * @param {string} name.query.required - name
-   * @returns {Task.model} 200 - A Task object
-   * @returns {Error}  default - Unexpected error
-   */
-  route.post((...args) => controller.post(...args));
+  route.get((...args) => controller.find(...args));
 };

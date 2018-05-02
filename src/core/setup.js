@@ -14,12 +14,7 @@ const forEachModelFile = (cb) => {
 
 const setupDB = () => {
   const db = {
-    foo: {
-      findOneAsync: id => Promise.resolve({
-        _id: id,
-        name: 'Foo test',
-      }),
-    },
+    models: {},
   };
 
   forEachModelFile((model) => {

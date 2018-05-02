@@ -6,16 +6,100 @@ module.exports = ({ router, db }) => {
   const controller = new Controller(service);
 
   const route = router.route('/<%= entity %>');
+  const forSingleRoute = router.route('/<%= entity %>/:id');
 
   /**
-   * This function comment is parsed by doctrine
+   * Gets some <%= entityInPascalCase %>s
    * @route GET /<%= domain %>/<%= entity %>
-   * @name get<%= entityInPascalCase %>
+   * @operationId get<%= entityInPascalCase %>s
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
    * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
-   * @param {string} name.query.required - name
+   * @summary Gets some <%= entityInPascalCase %>s
+   *
+   * @param {string} where.query - conditions
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
    */
-  route.get((...args) => controller.get(...args));
+  route.get((...args) => controller.find(...args));
 
+
+  /**
+   * Gets one <%= entityInPascalCase %>
+   * @route GET /<%= domain %>/<%= entity %>/:id
+   * @operationId get<%= entityInPascalCase %>
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Gets one <%= entityInPascalCase %>
+   *
+   * @param {string} id.param.required - id of object
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+   forSingleRoute.get((...args) => controller.findOne(...args));
+
+
+  /**
+   * Creates one <%= entityInPascalCase %>
+   * @route POST /<%= domain %>/<%= entity %>
+   * @operationId create<%= entityInPascalCase %>
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Creates one <%= entityInPascalCase %>
+   *
+   * @param {string} data.body.required - data of <%= entityInPascalCase %> to create
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+  route.post((...args) => controller.create(...args));
+
+  /**
+   * Updates some <%= entityInPascalCase %>s
+   * @route PUT /<%= domain %>/<%= entity %>
+   * @operationId update<%= entityInPascalCase %>s
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Updates some <%= entityInPascalCase %>s
+   *
+   * @param {string} data.body.required - data of <%= entityInPascalCase %> to update
+   * @param {string} where.query.required - condition to update the <%= entityInPascalCase %>s
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+  route.put((...args) => controller.update(...args));
+
+
+  /**
+   * Deletes one <%= entityInPascalCase %>
+   * @route DELETE /<%= domain %>/<%= entity %>/:id
+   * @operationId delete<%= entityInPascalCase %>
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Deletes one <%= entityInPascalCase %>
+   *
+   * @param {string} id.param.required - id of the <%= entityInPascalCase %> to delete
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+   forSingleRoute.delete((...args) => controller.deleteOne(...args));
+
+
+  /**
+   * Deletes some <%= entityInPascalCase %>s
+   * @route DELETE /<%= domain %>/<%= entity %>
+   * @operationId deleteSome<%= entityInPascalCase %>s
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Deletes some <%= entityInPascalCase %>s
+   *
+   * @param {string} where.query.required - conditions to delete the <%= entityInPascalCase %>s
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+  route.delete((...args) => controller.delete(...args));
 };
