@@ -23,17 +23,31 @@ module.exports = ({ router, db }) => {
    */
   route.get((...args) => controller.find(...args));
 
+  /**
+   * Gets one <%= entityInPascalCase %> by Id
+   * @route GET /<%= domain %>/<%= entity %>/:id
+   * @operationId get<%= entityInPascalCase %>ById
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Gets one <%= entityInPascalCase %> by Id
+   *
+   * @param {string} id.param.required - id of object
+   * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error}  default - Unexpected error
+   */
+   forSingleRoute.get((...args) => controller.findById(...args));
 
   /**
    * Gets one <%= entityInPascalCase %>
-   * @route GET /<%= domain %>/<%= entity %>/:id
+   * @route GET /<%= domain %>/<%= entity %>
    * @operationId get<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Gets one <%= entityInPascalCase %>
    *
-   * @param {string} id.param.required - id of object
+   * @param {string} where.query - condition to find 
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
    */

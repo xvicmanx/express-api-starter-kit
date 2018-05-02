@@ -2,6 +2,10 @@ const express = require('express');
 const path = require('path');
 const { forEachFile } = require('../../core/helpers');
 
+/**
+* Sets up all the routes of the domain
+* by injecting all the routes of each entity.
+*/
 module.exports = ({ router, db }) => {
   const domainRouter = express.Router();
 

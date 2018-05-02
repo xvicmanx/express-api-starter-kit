@@ -2,8 +2,9 @@ const db = require('diskdb');
 const { createDir } = require('../helpers');
 
 const wrapper = model => ({
-  find: () => Promise.resolve(model.find()),
-  findOne: () => Promise.resolve(model.find()),
+  find: condition => Promise.resolve(model.find(condition)),
+  findById: id => Promise.resolve(model.findOne({ _id: id })),
+  findOne: condition => Promise.resolve(model.findOne(condition)),
   create: data => Promise.resolve(model.save(data)),
   update: () => Promise.resolve(model.find()),
   delete: () => Promise.resolve(model.find()),
