@@ -14,7 +14,7 @@ module.exports = ({ router, db }) => {
    * @operationId get<%= entityInPascalCase %>s
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Gets some <%= entityInPascalCase %>s
    *
    * @param {string} where.query - conditions
@@ -29,7 +29,7 @@ module.exports = ({ router, db }) => {
    * @operationId get<%= entityInPascalCase %>ById
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Gets one <%= entityInPascalCase %> by Id
    *
    * @param {string} id.param.required - id of object
@@ -44,7 +44,7 @@ module.exports = ({ router, db }) => {
    * @operationId get<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Gets one <%= entityInPascalCase %>
    *
    * @param {string} where.query - condition to find 
@@ -60,10 +60,10 @@ module.exports = ({ router, db }) => {
    * @operationId create<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Creates one <%= entityInPascalCase %>
    *
-   * @param {string} data.body.required - data of <%= entityInPascalCase %> to create
+   * @param {<%= entityInPascalCase %>.model} data.body.required - data of <%= entityInPascalCase %> to create
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
    */
@@ -75,10 +75,10 @@ module.exports = ({ router, db }) => {
    * @operationId update<%= entityInPascalCase %>s
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Updates some <%= entityInPascalCase %>s
    *
-   * @param {string} data.body.required - data of <%= entityInPascalCase %> to update
+   * @param {<%= entityInPascalCase %>.model} data.body.required - data of <%= entityInPascalCase %> to update
    * @param {string} where.query.required - condition to update the <%= entityInPascalCase %>s
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
@@ -92,7 +92,7 @@ module.exports = ({ router, db }) => {
    * @operationId delete<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Deletes one <%= entityInPascalCase %>
    *
    * @param {string} id.param.required - id of the <%= entityInPascalCase %> to delete
@@ -108,7 +108,7 @@ module.exports = ({ router, db }) => {
    * @operationId deleteSome<%= entityInPascalCase %>s
    * @produces application/json application/xml
    * @consumes application/json application/xml
-   * @group <%= domainInCamel %>::<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Deletes some <%= entityInPascalCase %>s
    *
    * @param {string} where.query.required - conditions to delete the <%= entityInPascalCase %>s

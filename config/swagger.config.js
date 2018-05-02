@@ -17,5 +17,5 @@ module.exports = {
     schemes: ['http', 'https'],
   },
   basedir: __dirname,
-  files: ['../domains/**/*.js'],
+  files: ['../src/domains/**/*.js'],
 };

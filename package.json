@@ -22,7 +22,7 @@
     "dotenv": "^5.0.1",
     "dyn-require": "0.0.3",
     "express": "^4.16.3",
-    "express-swagger-generator": "^1.1.0",
+    "express-swagger-generator": "git+https://github.com/xvicmanx/express-swagger-generator.git",
     "open": "0.0.5"
   },
   "devDependencies": {
@@ -34,7 +34,6 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "eslint-watch": "^3.1.4",
-    "express-swagger-generator": "^1.1.0",
     "fs-extra": "^5.0.0",
     "localtunnel": "^1.9.0",
     "minimist": "^1.2.0",
