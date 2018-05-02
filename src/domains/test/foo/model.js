@@ -1,10 +1,10 @@
 /**
- * @typedef Task
+ * @typedef Foo
  *
  * @property {string} description
- * @property {string} title.required
+ * @property {number} id.required
  */
 module.exports = () => ({
-  name: 'task',
+  name: 'foo',
   fields: {},
 });

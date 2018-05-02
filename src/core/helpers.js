@@ -1,5 +1,6 @@
 // Helpers file
 const DynRequire = require('dyn-require');
+const fs = require('fs');
 
 const forEachFile = (dir, str, cb) => {
   const modules = new DynRequire(dir);
@@ -11,6 +12,12 @@ const forEachFile = (dir, str, cb) => {
   });
 };
 
+const createDir = (dir) => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+};
+
 const getAPIVersion = () => process.env.API_VERSION || 'v1';
 const getHostName = () => process.env.HOST_NAME || 'localhost';
 const getPort = () => process.env.PORT || 3000;
@@ -20,4 +27,5 @@ module.exports = {
   getAPIVersion,
   getHostName,
   getPort,
+  createDir,
 };

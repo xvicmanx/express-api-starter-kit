@@ -1,4 +1,4 @@
 module.exports = {
-  findOne: model => (db, id) => db.models[model].findOne(id),
-  find: model => (db, condition = {}, options = {}) => db.models[model].find(condition, options),
+  findOne: model => (db, id) => db.getModel(model).findOne(id),
+  find: model => (db, condition = {}, options = {}) => db.getModel(model).find(condition, options),
 };

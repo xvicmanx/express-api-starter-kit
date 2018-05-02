@@ -1,6 +1,6 @@
 module.exports = {
-  create: model => (db, data) => db.models[model].create(data),
-  deleteOne: model => (db, id) => db.models[model].deleteOne(id),
-  delete: model => (db, condition) => db.models[model].delete(condition),
-  update: model => (db, condition, data) => db.models[model].update(condition, data),
+  create: model => (db, data) => db.getModel(model).create(data),
+  deleteOne: model => (db, id) => db.getModel(model).deleteOne(id),
+  delete: model => (db, condition) => db.getModel(model).delete(condition),
+  update: model => (db, condition, data) => db.getModel(model).update(condition, data),
 };
