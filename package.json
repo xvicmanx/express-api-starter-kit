@@ -17,6 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "diskdb": "^0.1.17",
     "dotenv": "^5.0.1",
     "dyn-require": "0.0.3",
     "express": "^4.16.3",

@@ -1,10 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const setup = require('../src/core/setup');
 const { getPort } = require('../src/core/helpers');
 
 require('dotenv').config();
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 const port = getPort();
 const { log } = console;
 
