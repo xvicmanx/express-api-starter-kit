@@ -55,6 +55,49 @@ const queryValue = (source, query = '', defaultValue = null) => {
   return value || defaultValue;
 };
 
+/**
+ * Handles a query promise
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Array} expectedArgs - expected arguments
+ */
+const handleQuery = (req, res, expectedArgs = []) => {
+  expectedArgs.forEach((arg) => {
+    if (!queryValue(req, arg)) {
+      res.status(400).send(`Missing argument ${arg.split('.')[0]}`);
+    }
+  });
+  return promise => promise.then((result) => {
+    if (!result || (Array.isArray(result) && !result.length)) {
+      res.status(404);
+    }
+    res.send(result);
+  }).catch((err) => {
+    res.status(500);
+    res.send('An error has occured while executing the search', err);
+  });
+};
+
+/**
+ * Handles a mutation promise
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Array} expectedArgs - expected arguments
+ */
+const handleMutation = (req, res, expectedArgs = []) => {
+  expectedArgs.forEach((arg) => {
+    if (!queryValue(req, arg)) {
+      res.status(400).send(`Missing argument ${arg}`);
+    }
+  });
+  return promise => promise.then((result) => {
+    res.send(result);
+  }).catch((err) => {
+    res.status(500);
+    res.send('An error has occured while executing the search', err);
+  });
+};
+
 module.exports = {
   forEachFile,
   getAPIVersion,
@@ -62,4 +105,6 @@ module.exports = {
   getPort,
   createDir,
   queryValue,
+  handleQuery,
+  handleMutation,
 };
