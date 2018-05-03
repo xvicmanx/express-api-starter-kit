@@ -56,7 +56,7 @@ const setupDB = () => {
 
 /**
  * Setups all the routes of the application.
- * @param {Object} context - application context that contains the database, and parent router. 
+ * @param {Object} context - application context that contains the database, and parent router.
  */
 const setUpRoutes = (context) => {
   const router = express.Router();

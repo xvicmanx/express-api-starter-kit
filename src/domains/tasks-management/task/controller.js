@@ -1,5 +1,4 @@
 const { queryValue } = require('../../../core/helpers');
-
 /**
 *   Handler function
 */
@@ -35,7 +34,7 @@ const handleMutation = (req, res, expectedArgs = []) => {
 };
 
 /**
-*   <%= entityInPascalCase %> controller
+*   Task controller
 */
 class Controller {
   constructor(service) {
@@ -43,7 +42,7 @@ class Controller {
   }
 
   /**
-   * Finds <%= entity %>s that satisfy a given condition
+   * Finds tasks that satisfy a given condition
    * This condition comes in the request query object
    * @param {object} req - request
    * @param {object} res - response
@@ -53,7 +52,7 @@ class Controller {
   }
 
   /**
-   * Finds one <%= entity %> that satisfies the condition
+   * Finds one task that satisfies the condition
    * This condition comes in the request query object
    * @param {object} req - request
    * @param {object} res - response
@@ -63,7 +62,7 @@ class Controller {
   }
 
   /**
-   * Finds one <%= entity %> by its id
+   * Finds one task by its id
    * This condition comes in the params object of the request
    * @param {object} req - request
    * @param {object} res - response
@@ -73,7 +72,7 @@ class Controller {
   }
 
   /**
-   * Creates a new <%= entity %> with the provided data
+   * Creates a new task with the provided data
    * This data comes in the body object of the request
    * @param {object} req - request
    * @param {object} res - response
@@ -83,7 +82,7 @@ class Controller {
   }
 
   /**
-   * Updates <%= entity %>s that satisfy condition with the provided data
+   * Updates tasks that satisfy condition with the provided data
    * The data comes in the body object of the request,
    * and the condition in the query object.
    * @param {object} req - request
@@ -94,7 +93,7 @@ class Controller {
   }
 
   /**
-   * Deletes <%= entity %>s that satisfy the condition
+   * Deletes tasks that satisfy the condition
    * The condition in the query object of the request.
    * @param {object} req - request
    * @param {object} res - response
@@ -104,7 +103,7 @@ class Controller {
   }
 
   /**
-   * Deletes one <%= entity %> that matches the id.
+   * Deletes one task that matches the id.
    * The id comes in the params object of the request.
    * @param {object} req - request
    * @param {object} res - response

@@ -25,15 +25,16 @@ module.exports = ({ router, db }) => {
 
   /**
    * Gets one <%= entityInPascalCase %> by Id
-   * @route GET /<%= domain %>/<%= entity %>/:id
+   * @route GET /<%= domain %>/<%= entity %>/{id}
    * @operationId get<%= entityInPascalCase %>ById
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Gets one <%= entityInPascalCase %> by Id
    *
-   * @param {string} id.param.required - id of object
+   * @param {string} id.path.required - id of object
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
+   * @returns {Error} 404 - item not found
    * @returns {Error}  default - Unexpected error
    */
    forSingleRoute.get((...args) => controller.findById(...args));
@@ -88,14 +89,14 @@ module.exports = ({ router, db }) => {
 
   /**
    * Deletes one <%= entityInPascalCase %>
-   * @route DELETE /<%= domain %>/<%= entity %>/:id
+   * @route DELETE /<%= domain %>/<%= entity %>/{id}
    * @operationId delete<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
    * @summary Deletes one <%= entityInPascalCase %>
    *
-   * @param {string} id.param.required - id of the <%= entityInPascalCase %> to delete
+   * @param {string} id.path.required - id of the <%= entityInPascalCase %> to delete
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
    */

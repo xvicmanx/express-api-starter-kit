@@ -1,15 +1,15 @@
 /**
- * @typedef <%= entityInPascalCase %>
+ * @typedef Task
  *
  * @property {string} description.required
  * @property {string} title.required
  */
 
- /**
- * creates a <%= entityInPascalCase %>
+/**
+ * creates a Task
  * @returns {object}
  */
- module.exports = () => ({
-  name: '<%= entity %>',
+module.exports = () => ({
+  name: 'task',
   fields: {},
 });

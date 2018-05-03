@@ -41,10 +41,25 @@ const getHostName = () => process.env.HOST_NAME || 'localhost';
  */
 const getPort = () => process.env.PORT || 3000;
 
+/**
+ * Recursively go through an object and gets the value of the
+ * property queried.
+ *
+ * @param {Object} source - target object
+ * @param {string} query - property query
+ * @param {any} defaultValue - default value to return when property is not found
+ * @returns {any} - the found property, otherwise the default value
+ */
+const queryValue = (source, query = '', defaultValue = null) => {
+  const value = query.split('.').reduce((result, key) => (result && result[key] ? result[key] : null), source);
+  return value || defaultValue;
+};
+
 module.exports = {
   forEachFile,
   getAPIVersion,
   getHostName,
   getPort,
   createDir,
+  queryValue,
 };
