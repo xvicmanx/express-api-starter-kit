@@ -8,7 +8,7 @@ This document describes the current status and the upcoming milestones of this p
 
 | Status | Milestone | Goals |
 | :---: | :--- | :---: |
-| 🚀 | **[Complete first version](#complete-first-version)** | 3 / 6 |
+| 🚀 | **[Complete first version](#complete-first-version)** | 3 / 7 |
 
 
 #### Complete first version
@@ -18,7 +18,7 @@ This document describes the current status and the upcoming milestones of this p
 * It is stable
 
 
-🚀 &nbsp;**OPEN** &nbsp; &nbsp;&nbsp;**1 / 5** goals completed
+🚀 &nbsp;**OPEN** &nbsp; &nbsp;&nbsp;**3 / 7** goals completed
 
 | Status | Goal |
 | :---: | :--- |
