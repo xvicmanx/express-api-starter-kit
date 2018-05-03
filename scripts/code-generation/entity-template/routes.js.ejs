@@ -1,5 +1,5 @@
-const Controller = require('./controller');
-const Service = require('./service');
+const <%= entityInPascalCase %>Controller = require('./controller');
+const <%= entityInPascalCase %>Service = require('./service');
 
 /**
  * @typedef <%= entityInPascalCase %>sCount
@@ -7,8 +7,8 @@ const Service = require('./service');
  */
 
 module.exports = ({ router, db }) => {
-  const service = new Service(db, '<%= entity %>');
-  const controller = new Controller(service);
+  const service = new <%= entityInPascalCase %>Service(db, '<%= entity %>');
+  const controller = new <%= entityInPascalCase %>Controller(service);
 
   const route = router.route('/<%= entity %>');
   const forSingleRoute = router.route('/<%= entity %>/:id');
@@ -45,7 +45,6 @@ module.exports = ({ router, db }) => {
    */
    forSingleRoute.get((...args) => controller.findById(...args));
 
-
    /**
    * Counts the <%= entityInPascalCase %> that match condition
    * @route GET /<%= domain %>/<%= entity %>/get/count
@@ -61,7 +60,6 @@ module.exports = ({ router, db }) => {
    */
   countRoute.get((...args) => controller.count(...args));
 
-
   /**
    * Gets one <%= entityInPascalCase %>
    * @route GET /<%= domain %>/<%= entity %>
@@ -76,7 +74,6 @@ module.exports = ({ router, db }) => {
    * @returns {Error}  default - Unexpected error
    */
    forSingleRoute.get((...args) => controller.findOne(...args));
-
 
   /**
    * Creates one <%= entityInPascalCase %>
@@ -109,7 +106,6 @@ module.exports = ({ router, db }) => {
    */
   route.put((...args) => controller.update(...args));
 
-
   /**
    * Deletes one <%= entityInPascalCase %>
    * @route DELETE /<%= domain %>/<%= entity %>/{id}
@@ -124,7 +120,6 @@ module.exports = ({ router, db }) => {
    * @returns {Error}  default - Unexpected error
    */
    forSingleRoute.delete((...args) => controller.deleteOne(...args));
-
 
   /**
    * Deletes some <%= entityInPascalCase %>s

@@ -43,7 +43,8 @@ const forEachModelFile = (cb) => {
  */
 const setupDB = () => {
   const Driver = getDriver();
-  const db = new Driver();
+  const driverName = databaseConfig.driver;
+  const db = new Driver(databaseConfig.configs[driverName]);
 
   forEachModelFile((model) => {
     db.addModel(model());

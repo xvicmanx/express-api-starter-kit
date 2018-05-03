@@ -98,6 +98,22 @@ const handleMutation = (req, res, expectedArgs = []) => {
   });
 };
 
+/**
+ * Converts a callback like function to a promise
+ * @param {function} method - function to promify
+ * @param {Array} args - argumtents of the target function
+ * @returns {Promise}
+ */
+const promify = (method, ...args) => new Promise((resolve, reject) => {
+  method(...args, (error, result) => {
+    if (error) {
+      reject(error);
+    } else {
+      resolve(result);
+    }
+  });
+});
+
 module.exports = {
   forEachFile,
   getAPIVersion,
@@ -107,4 +123,5 @@ module.exports = {
   queryValue,
   handleQuery,
   handleMutation,
+  promify,
 };

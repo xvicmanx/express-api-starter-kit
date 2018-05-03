@@ -1,5 +1,5 @@
-const Controller = require('./controller');
-const Service = require('./service');
+const TaskController = require('./controller');
+const TaskService = require('./service');
 
 /**
  * @typedef TasksCount
@@ -7,8 +7,8 @@ const Service = require('./service');
  */
 
 module.exports = ({ router, db }) => {
-  const service = new Service(db, 'task');
-  const controller = new Controller(service);
+  const service = new TaskService(db, 'task');
+  const controller = new TaskController(service);
 
   const route = router.route('/task');
   const forSingleRoute = router.route('/task/:id');

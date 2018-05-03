@@ -3,6 +3,6 @@ const BaseService = require('../../../core/services/base-service');
 /**
 * Task service
 */
-class Service extends BaseService {}
+class TaskService extends BaseService {}
 
-module.exports = Service;
+module.exports = TaskService;

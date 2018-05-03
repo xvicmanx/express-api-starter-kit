@@ -3,6 +3,6 @@ const BaseController = require('../../../core/controllers/base-controller');
 /**
 *   Task controller
 */
-class Controller extends BaseController {}
+class TaskController extends BaseController {}
 
-module.exports = Controller;
+module.exports = TaskController;
