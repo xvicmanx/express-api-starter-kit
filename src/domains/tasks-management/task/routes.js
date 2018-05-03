@@ -1,12 +1,18 @@
 const Controller = require('./controller');
 const Service = require('./service');
 
+/**
+ * @typedef TasksCount
+ * @property {number} count - total of tasks
+ */
+
 module.exports = ({ router, db }) => {
-  const service = new Service(db);
+  const service = new Service(db, 'task');
   const controller = new Controller(service);
 
   const route = router.route('/task');
   const forSingleRoute = router.route('/task/:id');
+  const countRoute = router.route('/task/get/count');
 
   /**
    * Gets some Tasks
@@ -38,6 +44,23 @@ module.exports = ({ router, db }) => {
    * @returns {Error}  default - Unexpected error
    */
   forSingleRoute.get((...args) => controller.findById(...args));
+
+
+  /**
+   * Counts the Task that match condition
+   * @route GET /tasks-management/task/get/count
+   * @operationId countTasks
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group tasksManagement.task - Operations about task
+   * @summary Counts the Tasks for conditions
+   *
+   * @param {string} where.query - conditions
+   * @returns {TasksCount.model} 200 - the total of tasks
+   * @returns {Error}  default - Unexpected error
+   */
+  countRoute.get((...args) => controller.count(...args));
+
 
   /**
    * Gets one Task

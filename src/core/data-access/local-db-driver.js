@@ -28,6 +28,16 @@ const wrapper = model => ({
    */
   findOne: condition => Promise.resolve(model.findOne(condition)),
   /**
+   * Counts the items that match certain condition
+   * @param {Object} condition - the condition
+   * @returns {Promise<number>} - the total items
+   */
+  count: (condition) => {
+    const result = model.find(condition);
+    if (!Array.isArray(result)) return Promise.resolve({ count: 0 });
+    return Promise.resolve({ count: result.length });
+  },
+  /**
    * Creates a new item with the provided data
    * @param {Object} data - the data of the item
    * @returns {Promise} -  the created item

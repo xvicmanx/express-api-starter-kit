@@ -1,12 +1,18 @@
 const Controller = require('./controller');
 const Service = require('./service');
 
+/**
+ * @typedef <%= entityInPascalCase %>sCount
+ * @property {number} count - total of <%= entity %>s
+ */
+
 module.exports = ({ router, db }) => {
-  const service = new Service(db);
+  const service = new Service(db, '<%= entity %>');
   const controller = new Controller(service);
 
   const route = router.route('/<%= entity %>');
   const forSingleRoute = router.route('/<%= entity %>/:id');
+  const countRoute = router.route('/<%= entity %>/get/count');
 
   /**
    * Gets some <%= entityInPascalCase %>s
@@ -38,6 +44,23 @@ module.exports = ({ router, db }) => {
    * @returns {Error}  default - Unexpected error
    */
    forSingleRoute.get((...args) => controller.findById(...args));
+
+
+   /**
+   * Counts the <%= entityInPascalCase %> that match condition
+   * @route GET /<%= domain %>/<%= entity %>/get/count
+   * @operationId count<%= entityInPascalCase %>s
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Counts the <%= entityInPascalCase %>s for conditions
+   *
+   * @param {string} where.query - conditions
+   * @returns {<%= entityInPascalCase %>sCount.model} 200 - the total of <%= entity %>s
+   * @returns {Error}  default - Unexpected error
+   */
+  countRoute.get((...args) => controller.count(...args));
+
 
   /**
    * Gets one <%= entityInPascalCase %>
