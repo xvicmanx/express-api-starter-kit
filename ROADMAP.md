@@ -1,8 +1,8 @@
-# Express API Starter Kit - Roadmap
+# Trebol API Starter Kit - Roadmap
 
 This document describes the current status and the upcoming milestones of this project.
 
-## Express API Starter Kit
+## Trebol API Starter Kit
 
 #### Milestone Summary
 
