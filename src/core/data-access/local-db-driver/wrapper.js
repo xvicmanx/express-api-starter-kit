@@ -1,10 +1,4 @@
 /**
- * This file contains the local db (disk) driver
- */
-const db = require('diskdb');
-const { createDir } = require('../helpers');
-
-/**
   * Creates model wrapper
   * @param {Object} model - the model.
   */
@@ -67,43 +61,4 @@ const wrapper = model => ({
   deleteOne: id => Promise.resolve(model.remove({ _id: id }, false)),
 });
 
-/**
- * Local db (Disk) driver
- */
-class LocalDBDriver {
-  /**
-   * Create a database at a given location
-   * @param {string} dir - directory of the database
-   */
-  constructor(dir) {
-    this.dir = dir || `${__dirname}/../../../.db/`;
-    this.db = db;
-    this.modelNames = [];
-  }
-  /**
-   * Add a models to the DB
-   * @param {Object} model - the model definition
-   */
-  addModel(model) {
-    this.modelNames.push(model.name);
-  }
-
-  /**
-   * Get access to the model.
-   * @param {string} name - name of the model to retrieve.
-   * @returns {}
-   */
-  getModel(name) {
-    return wrapper(this.db[name]);
-  }
-
-  /**
-   * Synchronizes the data base.
-   */
-  sync() {
-    createDir(this.dir);
-    this.db.connect(this.dir, this.modelNames);
-  }
-}
-
-module.exports = LocalDBDriver;
+module.exports = wrapper;

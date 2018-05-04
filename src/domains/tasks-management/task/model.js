@@ -1,3 +1,5 @@
+const { DATA_TYPES } = require('../../../core/internal/constants');
+
 /**
  * @typedef Task
  *
@@ -11,5 +13,14 @@
  */
 module.exports = () => ({
   name: 'task',
-  fields: {},
+  fields: {
+    title: {
+      type: DATA_TYPES.STRING,
+      required: true,
+    },
+    description: {
+      type: DATA_TYPES.STRING,
+      required: true,
+    },
+  },
 });

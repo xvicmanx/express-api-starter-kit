@@ -24,7 +24,8 @@
     "express": "^4.16.3",
     "express-swagger-generator": "git+https://github.com/xvicmanx/express-swagger-generator.git",
     "mongoose": "^5.0.17",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "validator": "^10.0.0"
   },
   "devDependencies": {
     "chalk": "^2.4.0",

@@ -1,8 +1,10 @@
+const { DATABASE_DRIVERS } = require('./internal/constants');
+
 module.exports = {
-  driver: 'local-db', // local-db | mongo-db | 'mysql-db'
+  driver: DATABASE_DRIVERS.LOCAL_DB,
   configs: {
-    'mysql-db': {},
-    'mongo-db': {
+    [DATABASE_DRIVERS.MYSQL_DB]: {},
+    [DATABASE_DRIVERS.MONGO_DB]: {
       username: 'foo',
       password: 'bar',
       host: 'localhost',
