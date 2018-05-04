@@ -1,6 +1,6 @@
-# Express API Starter Kit
+# Trebol API Starter Kit
 
-A boiler plate project to start coding your Express API right away. This project allows to the automatic generation of domains/modules (groups of entities) and entities for a better organization. It also integrates the automatic Swagger spec file generation.
+A tool to start coding your API right away. This project allows to the automatic generation of domains/modules (groups of entities) and entities for a better organization. It also integrates the automatic Swagger spec file generation.
  
 
 ## Getting Started
@@ -8,7 +8,7 @@ A boiler plate project to start coding your Express API right away. This project
 To get started it is only necessary to clone this repository, install all the dependencies and start your server.
 
 ```bash
-  git clone https://github.com/xvicmanx/express-api-starter-kit
+  git clone https://github.com/xvicmanx/trebol-api-starter-kit
   npm install
   npm start
 ```
@@ -87,7 +87,7 @@ Feel free to make any suggestion to improve this project.
 
 ## Authors
 
-See the list of [contributors](https://github.com/xvicmanx/express-api-starter-kit/contributors) who participated in this project.
+See the list of [contributors](https://github.com/xvicmanx/trebol-api-starter-kit/contributors) who participated in this project.
 
 ## Roadmap
 
