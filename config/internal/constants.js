@@ -1,7 +1,11 @@
 module.exports = {
   DATABASE_DRIVERS: {
-    LOCAL_DB: 'local-db',
     MONGO_DB: 'mongo-db',
-    MYSQL_DB: 'mysql-db',
+    SQL_DB: 'sql-db',
+  },
+  SQL_DIALECTS: {
+    MYSQL: 'mysql',
+    SQLITE: 'sqlite',
+    POSTGRES: 'postgres',
   },
 };

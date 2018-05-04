@@ -18,13 +18,18 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "diskdb": "^0.1.17",
     "dotenv": "^5.0.1",
     "dyn-require": "0.0.3",
     "express": "^4.16.3",
     "express-swagger-generator": "git+https://github.com/xvicmanx/express-swagger-generator.git",
     "mongoose": "^5.0.17",
+    "mysql2": "^1.5.3",
+    "objectid": "^3.2.1",
     "open": "0.0.5",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.37.6",
+    "sqlite3": "^4.0.0",
     "validator": "^10.0.0"
   },
   "devDependencies": {

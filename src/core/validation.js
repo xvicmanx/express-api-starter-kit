@@ -1,4 +1,5 @@
 const validator = require('validator');
+const objectid = require('objectid');
 const { DATA_TYPES } = require('./internal/constants');
 
 function ValidationError(validation) {
@@ -17,13 +18,35 @@ ValidationError.prototype.constructor = ValidationError;
  * @property {boolean} valid -  whether is valid or not
  */
 
-const fieldValidators = {
-  [DATA_TYPES.STRING]: s => typeof s === 'string',
-  [DATA_TYPES.NUMBER]: x => typeof x === 'number',
-  [DATA_TYPES.DATE]: d => !!validator.toDate(d),
-  [DATA_TYPES.BOOLEAN]: x => validator.isBoolean(x),
-  [DATA_TYPES.ARRAY]: x => Array.isArray(x),
-};
+const fieldValidators = (() => {
+  const validators = {
+    id: s => objectid.isValid(s),
+    string: s => typeof s === 'string',
+    number: x => typeof x === 'number',
+    date: d => !!validator.toDate(d),
+    boolean: x => validator.isBoolean(x),
+    enum: (x, conf) => conf.values.indexOf(x) > -1,
+  };
+
+  return {
+    ENUM: validators.enum,
+    [DATA_TYPES.STRING]: validators.string,
+    [DATA_TYPES.CHAR]: validators.string,
+    [DATA_TYPES.TEXT]: validators.string,
+    [DATA_TYPES.TINY_INT]: validators.number,
+    [DATA_TYPES.SMALL_INT]: validators.number,
+    [DATA_TYPES.MEDIUM_INT]: validators.number,
+    [DATA_TYPES.INTEGER]: validators.number,
+    [DATA_TYPES.BIG_INT]: validators.number,
+    [DATA_TYPES.FLOAT]: validators.number,
+    [DATA_TYPES.DOUBLE]: validators.number,
+    [DATA_TYPES.DECIMAL]: validators.number,
+    [DATA_TYPES.DATE]: validators.date,
+    [DATA_TYPES.BOOLEAN]: validators.boolean,
+    [DATA_TYPES.ID]: validators.id,
+  };
+})();
+
 
 /**
  * Validates the fields by checking if the provided values are of
@@ -37,7 +60,7 @@ const validateFields = (data, definition) => {
   const valid = Object.keys(data).reduce((result, prop) => {
     const x = definition.fields[prop];
     const validate = x.type && fieldValidators[x.type];
-    if (validate && !validate(data[prop])) {
+    if (validate && !validate(data[prop], x)) {
       errors.push(`'${prop}' should be <${x.type}>`);
       return false;
     }

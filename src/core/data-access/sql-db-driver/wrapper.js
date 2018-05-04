@@ -8,42 +8,42 @@ const wrapper = model => ({
    * @param {Object} condition - the condition
    * @returns {Promise<Array>} - the found items
    */
-  find: condition => Promise.resolve(model.find(condition)),
+  find: condition => model.findAll({ where: condition }),
   /**
    * Find an item that matches the given id
    * @param {number} id - the item's id
    * @returns {Promise} - the found item
    */
-  findById: id => Promise.resolve(model.findOne({ _id: id })),
+  findById: id => model.findById(id),
   /**
    * Find an item that matches certain condition
    * @param {Object} condition - the condition
    * @returns {Promise} - the found item
    */
-  findOne: condition => Promise.resolve(model.findOne(condition)),
+  findOne: condition => model.findOne({ where: condition }),
   /**
    * Counts the items that match certain condition
    * @param {Object} condition - the condition
-   * @returns {Promise<number>} - the total items
+   * @returns {Promise} - the total items
    */
   count: (condition) => {
-    const result = model.find(condition);
+    const result = model.findAndCountAll(condition);
     if (!Array.isArray(result)) return Promise.resolve({ count: 0 });
-    return Promise.resolve({ count: result.length });
+    return result;
   },
   /**
    * Creates a new item with the provided data
    * @param {Object} data - the data of the item
    * @returns {Promise} -  the created item
    */
-  create: data => Promise.resolve(model.save(data)),
+  create: data => model.create(data),
   /**
    * Updates items that matches certain condition with the provided data
    * @param {Object} condition - the condition
    * @param {Object} data - the data of the item
    * @returns {Promise<Array>} -  the updated items
    */
-  update: (condition, data) => Promise.resolve(model.update(condition, data, { multi: true })),
+  update: (condition, data) => model.update(data, { where: condition }),
   /**
    * Deletes the items that match the given condition
    * @param {Object} condition - the condition
@@ -51,14 +51,14 @@ const wrapper = model => ({
    */
   delete: (condition) => {
     if (!condition || Object.keys(condition) <= 0) return Promise.resolve([]);
-    return Promise.resolve(model.remove(condition, true));
+    return model.destroy({ where: condition });
   },
   /**
    * Deletes the item with the given id
    * @param {number} id - the id
    * @returns {Promise} -  the removed item
    */
-  deleteOne: id => Promise.resolve(model.remove({ _id: id }, false)),
+  deleteOne: id => model.destroy({ where: { id }, limit: 1 }),
 });
 
 module.exports = wrapper;
