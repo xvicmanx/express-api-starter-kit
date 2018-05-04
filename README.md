@@ -1,5 +1,8 @@
 # Trebol API Starter Kit
 
+![Trebol-API-Starter-Kit-Logo](trebol-api.png)
+
+
 A tool to start coding your API right away. This project allows to the automatic generation of domains/modules (groups of entities) and entities for a better organization. It also integrates the automatic Swagger spec file generation.
  
 
@@ -98,4 +101,4 @@ To know more about the future and current status of the project - see the [ROADM
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgements
- Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/")
+ Icons made by [Freepik](http://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/)
