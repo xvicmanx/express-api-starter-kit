@@ -61,23 +61,6 @@ module.exports = ({ router, db }) => {
    */
   countRoute.get((...args) => controller.count(...args));
 
-
-  /**
-   * Gets one Task
-   * @route GET /tasks-management/task
-   * @operationId getTask
-   * @produces application/json application/xml
-   * @consumes application/json application/xml
-   * @group tasksManagement.task - Operations about task
-   * @summary Gets one Task
-   *
-   * @param {string} where.query - condition to find
-   * @returns {Task.model} 200 - Task object
-   * @returns {Error}  default - Unexpected error
-   */
-  forSingleRoute.get((...args) => controller.findOne(...args));
-
-
   /**
    * Creates one Task
    * @route POST /tasks-management/task

@@ -39,7 +39,7 @@ const forEachModelFile = (cb) => {
 /**
  * Setups the project data base by getting the driver,
  * and adding each model to it to be setup.
- * @returns the setup data base driver (Access object)
+ * @returns {Promise}  with the setup data base driver (Access object)
  */
 const setupDB = () => {
   const Driver = getDriver();
@@ -50,9 +50,7 @@ const setupDB = () => {
     db.addModel(model());
   });
 
-  db.sync();
-
-  return db;
+  return db.sync();
 };
 
 /**
@@ -84,7 +82,8 @@ const setUpSwaggerDocumentation = (app) => {
  * @param {Object} app - express application
  */
 module.exports = (app) => {
-  const db = setupDB();
-  setUpRoutes({ db, app });
-  setUpSwaggerDocumentation(app);
+  setupDB().then((db) => {
+    setUpRoutes({ db, app });
+    setUpSwaggerDocumentation(app);
+  });
 };

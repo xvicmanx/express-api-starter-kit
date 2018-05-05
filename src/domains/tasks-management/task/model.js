@@ -1,7 +1,7 @@
 const { DATA_TYPES } = require('../../../core/internal/constants');
 
 /**
- * @typedef Task
+ * @typedef {object} Task
  *
  * @property {string} description.required
  * @property {string} title.required

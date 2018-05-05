@@ -11,12 +11,6 @@ module.exports = {
       database: 'testdb',
       dialect: SQL_DIALECTS.SQLITE,
       storage: `${__dirname}/../project.sqlite`, // SQLITE
-      // pool: {
-      //   max: 5,
-      //   min: 0,
-      //   acquire: 30000,
-      //   idle: 10000
-      // },
     },
     [DATABASE_DRIVERS.MONGO_DB]: {
       username: 'foo',
