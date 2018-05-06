@@ -1,19 +1,18 @@
 const { DATA_TYPES } = require('../../../core/internal/constants');
 
 /**
- * @typedef {object} Task
+ * @typedef User
  *
  * @property {string} description.required
  * @property {string} title.required
- * @property {*} user
  */
 
 /**
- * creates a Task
+ * creates a User
  * @returns {object}
  */
 module.exports = () => ({
-  name: 'task',
+  name: 'user',
   fields: {
     title: {
       type: DATA_TYPES.STRING,
@@ -22,9 +21,6 @@ module.exports = () => ({
     description: {
       type: DATA_TYPES.STRING,
       required: true,
-    },
-    user: {
-      model: 'user',
     },
   },
 });

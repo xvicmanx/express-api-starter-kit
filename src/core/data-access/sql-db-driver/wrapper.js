@@ -8,19 +8,19 @@ const wrapper = model => ({
    * @param {Object} condition - the condition
    * @returns {Promise<Array>} - the found items
    */
-  find: condition => model.findAll({ where: condition }),
+  find: (condition, options = {}) => model.findAll({ ...options, where: condition }),
   /**
    * Find an item that matches the given id
    * @param {number} id - the item's id
    * @returns {Promise} - the found item
    */
-  findById: id => model.findById(id),
+  findById: (id, options = {}) => model.findOne({ ...options, where: { id } }),
   /**
    * Find an item that matches certain condition
    * @param {Object} condition - the condition
    * @returns {Promise} - the found item
    */
-  findOne: condition => model.findOne({ where: condition }),
+  findOne: (condition, options = {}) => model.findOne({ ...options, where: condition }),
   /**
    * Counts the items that match certain condition
    * @param {Object} condition - the condition

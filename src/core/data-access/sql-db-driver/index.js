@@ -5,6 +5,7 @@
 const Sequelize = require('sequelize');
 const wrapper = require('./wrapper');
 const { validateProxy } = require('../../validation');
+const { dataTransformProxy } = require('./data-transform');
 const mapFields = require('./map-fields');
 
 const relateModels = (definitions, models) => {
@@ -26,6 +27,7 @@ const relateModels = (definitions, models) => {
         });
     });
 };
+
 
 /**
  * SQL db driver
@@ -66,8 +68,13 @@ class SQLDBDriver {
    * @param {string} name - name of the model to retrieve.
    */
   getModel(name) {
-    return validateProxy(
+    const wrappedModel = dataTransformProxy(
       wrapper(this.models[name]),
+      this.definitions[name],
+    );
+
+    return validateProxy(
+      wrappedModel,
       this.definitions[name],
     );
   }
