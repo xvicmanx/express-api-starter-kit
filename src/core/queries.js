@@ -17,6 +17,14 @@ module.exports = (db, model) => ({
    */
   findById: id => db.getModel(model).findById(id),
   /**
+   * Finds the related model for the item that matches the given id.
+   * @param {number} id - id of the desired item.
+   * @param {string} related - desired model
+   * @returns {Promise} - the found item.
+   */
+  findByIdRelated: (id, related) => db.getModel(model)
+    .findByIdRelated(id, related),
+  /**
    * Finds items that satisfies a given condition.
    * @param {Object} condition - condition to find the items.
    * @param {Object} options - some config options of the search.

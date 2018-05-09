@@ -5,7 +5,7 @@ const { DATA_TYPES } = require('../../../core/internal/constants');
  *
  * @property {string} description.required
  * @property {string} title.required
- * @property {*} user
+ * @property {object} user
  */
 
 /**

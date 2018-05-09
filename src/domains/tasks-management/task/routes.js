@@ -13,6 +13,7 @@ module.exports = ({ router, db }) => {
   const route = router.route('/task');
   const forSingleRoute = router.route('/task/:id');
   const countRoute = router.route('/task/get/count');
+  const relatedRoute = router.route('/task/:id/:related');
 
   /**
    * Gets some Tasks
@@ -45,6 +46,22 @@ module.exports = ({ router, db }) => {
    */
   forSingleRoute.get((...args) => controller.findById(...args));
 
+  /**
+   * Gets Task by Id related models
+   * @route GET /tasks-management/task/{id}/{related}
+   * @operationId getTaskByIdRelated
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group tasksManagement.task - Operations about task
+   * @summary Gets Task by Id related models
+   *
+   * @param {string} id.path.required - id of object
+   * @param {string} related.path.required - related models
+   * @returns {object} 200 - related model or models
+   * @returns {Error} 404 - item not found
+   * @returns {Error}  default - Unexpected error
+   */
+  relatedRoute.get((...args) => controller.findByIdRelated(...args));
 
   /**
    * Counts the Task that match condition

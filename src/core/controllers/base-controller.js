@@ -40,12 +40,29 @@ class BaseController {
 
   /**
    * Finds one item by its id
-   * This condition comes in the params object of the request
+   *
    * @param {object} req - request
    * @param {object} res - response
    */
   findById(req, res) {
     handleQuery(req, res, ['params.id'])(this.service.findById(req.params.id));
+  }
+
+  /**
+   * Finds related models for the one with the id
+   *
+   * @param {object} req - request
+   * @param {object} res - response
+   */
+  findByIdRelated(req, res) {
+    handleQuery(
+      req,
+      res,
+      ['params.id', 'params.related'],
+    )(this.service.findByIdRelated(
+      req.params.id,
+      req.params.related,
+    ));
   }
 
   /**

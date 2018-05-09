@@ -1,3 +1,9 @@
+const { snakeToCamelCase, toTitleCase } = require('../../helpers');
+
+const toPascal = (name) => {
+  const camel = snakeToCamelCase(name.replace('-', '_'));
+  return toTitleCase(camel);
+};
 /**
   * Creates model wrapper
   * @param {Object} model - the model.
@@ -15,6 +21,21 @@ const wrapper = model => ({
    * @returns {Promise} - the found item
    */
   findById: (id, options = {}) => model.findOne({ ...options, where: { id } }),
+  /**
+   * Find related model for the item that matches the given id
+   * @param {number} id - the item's id
+   * @param {string} related - related model
+   * @returns {Promise} - the found item
+   */
+  findByIdRelated: async (id, related, options = {}) => {
+    const method = `get${toPascal(related)}`;
+    const parent = await model.findOne({ ...options, where: { id } });
+    if (!parent || !parent[method]) {
+      return null;
+    }
+    const result = await parent[method]();
+    return result;
+  },
   /**
    * Find an item that matches certain condition
    * @param {Object} condition - the condition

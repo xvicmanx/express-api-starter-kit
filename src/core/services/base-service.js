@@ -26,6 +26,16 @@ class BaseService {
   }
 
   /**
+   * Finds related objects for the item with Id
+   * @param {string} id - id of the task
+   * @param {string} related - related model
+   * @returns {Promise}
+   */
+  findByIdRelated(id, related) {
+    return this.queries.findByIdRelated(id, related);
+  }
+
+  /**
    * Finds one item that satisfies the condition
    * @param {object} condition - condition to search
    * @returns {Promise}

@@ -114,6 +114,21 @@ const promify = (method, ...args) => new Promise((resolve, reject) => {
   });
 });
 
+/**
+ * Converts text from snake to camelcase
+ * @param {string} text -  text to be converted
+ * @return {string} - the converted string
+ */
+const snakeToCamelCase = text => text.replace(/(_)([a-z])/g, (x, y, z) => z.toUpperCase());
+
+/**
+ * Converts text to titlecase
+ * @param {string} text -  text to be converted
+ * @return {string} - the converted string
+ */
+const toTitleCase = text => `${text.substring(0, 1).toUpperCase()}${text.substring(1)}`;
+
+
 module.exports = {
   forEachFile,
   getAPIVersion,
@@ -124,4 +139,6 @@ module.exports = {
   handleQuery,
   handleMutation,
   promify,
+  snakeToCamelCase,
+  toTitleCase,
 };
