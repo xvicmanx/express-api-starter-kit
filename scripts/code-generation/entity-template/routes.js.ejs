@@ -13,6 +13,7 @@ module.exports = ({ router, db }) => {
   const route = router.route('/<%= entity %>');
   const forSingleRoute = router.route('/<%= entity %>/:id');
   const countRoute = router.route('/<%= entity %>/get/count');
+  const relatedRoute = router.route('/task/:id/:related');
 
   /**
    * Gets some <%= entityInPascalCase %>s
@@ -44,6 +45,23 @@ module.exports = ({ router, db }) => {
    * @returns {Error}  default - Unexpected error
    */
    forSingleRoute.get((...args) => controller.findById(...args));
+
+   /**
+   * Gets <%= entityInPascalCase %> by Id related models
+   * @route GET /<%= domain %>/<%= entity %>/{id}/{related}
+   * @operationId get<%= entityInPascalCase %>ByIdRelated
+   * @produces application/json application/xml
+   * @consumes application/json application/xml
+   * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
+   * @summary Gets <%= entityInPascalCase %> by Id related models
+   *
+   * @param {string} id.path.required - id of object
+   * @param {string} related.path.required - related models
+   * @returns {object} 200 - related model or models
+   * @returns {Error} 404 - item not found
+   * @returns {Error}  default - Unexpected error
+   */
+  relatedRoute.get((...args) => controller.findByIdRelated(...args));
 
    /**
    * Counts the <%= entityInPascalCase %> that match condition
