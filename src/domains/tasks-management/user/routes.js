@@ -93,7 +93,7 @@ module.exports = ({ router, db }) => {
   /**
    * Updates some Users
    * @route PUT /tasks-management/user
-   * @operationId updateUsers
+   * @operationId updateUser
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group tasksManagement.user - Operations about user
