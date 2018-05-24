@@ -100,7 +100,7 @@ module.exports = ({ router, db }) => {
    * @summary Updates some Users
    *
    * @param {User.model} data.body.required - data of User to update
-   * @param {string} where.query.required - condition to update the Users
+   * @param {string} id.query.required - id
    * @returns {User.model} 200 - User object
    * @returns {Error}  default - Unexpected error
    */

@@ -86,7 +86,7 @@ class BaseService {
   /**
    * Deletes items that satisfy a given condition
    * @param {object} condition - condition
-   * @returns {Promise<Array>}
+   * @returns {Promise}
    */
   delete(condition = {}) {
     return this.mutations.deleteSome(condition);

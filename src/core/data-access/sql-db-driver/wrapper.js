@@ -68,18 +68,26 @@ const wrapper = model => ({
   /**
    * Deletes the items that match the given condition
    * @param {Object} condition - the condition
-   * @returns {Promise<Array>} -  the removed items
+   * @returns {Promise}
    */
   delete: (condition) => {
-    if (!condition || Object.keys(condition) <= 0) return Promise.resolve([]);
-    return model.destroy({ where: condition });
+    if (!condition || Object.keys(condition) <= 0) return Promise.resolve(false);
+    return new Promise((resolve, reject) => {
+      model.destroy({ where: condition }).then(() => {
+        resolve(true);
+      }).catch(reject);
+    });
   },
   /**
    * Deletes the item with the given id
    * @param {number} id - the id
    * @returns {Promise} -  the removed item
    */
-  deleteOne: id => model.destroy({ where: { id }, limit: 1 }),
+  deleteOne: id => new Promise((resolve, reject) => {
+    model.destroy({ where: { id }, limit: 1 }).then(() => {
+      resolve(true);
+    }).catch(reject);
+  }),
 });
 
 module.exports = wrapper;

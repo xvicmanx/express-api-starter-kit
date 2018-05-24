@@ -109,16 +109,16 @@ module.exports = ({ router, db }) => {
   route.post((...args) => controller.create(...args));
 
   /**
-   * Updates some <%= entityInPascalCase %>s
+   * Updates <%= entityInPascalCase %>
    * @route PUT /<%= domain %>/<%= entity %>
-   * @operationId update<%= entityInPascalCase %>s
+   * @operationId update<%= entityInPascalCase %>
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group <%= domainInCamel %>.<%= entityInCamel %> - Operations about <%= entityInCamel %>
-   * @summary Updates some <%= entityInPascalCase %>s
+   * @summary Updates <%= entityInPascalCase %>
    *
    * @param {<%= entityInPascalCase %>.model} data.body.required - data of <%= entityInPascalCase %> to update
-   * @param {string} where.query.required - condition to update the <%= entityInPascalCase %>s
+   * @param {string} id.query.required - id of <%= entityInPascalCase %>
    * @returns {<%= entityInPascalCase %>.model} 200 - <%= entityInPascalCase %> object
    * @returns {Error}  default - Unexpected error
    */

@@ -96,14 +96,14 @@ module.exports = ({ router, db }) => {
   /**
    * Updates some Tasks
    * @route PUT /tasks-management/task
-   * @operationId updateTasks
+   * @operationId updateTask
    * @produces application/json application/xml
    * @consumes application/json application/xml
    * @group tasksManagement.task - Operations about task
-   * @summary Updates some Tasks
+   * @summary Updates task
    *
    * @param {Task.model} data.body.required - data of Task to update
-   * @param {string} where.query.required - condition to update the Tasks
+   * @param {string} id.query.required - id
    * @returns {Task.model} 200 - Task object
    * @returns {Error}  default - Unexpected error
    */

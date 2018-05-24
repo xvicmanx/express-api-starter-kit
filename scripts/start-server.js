@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const setup = require('../src/core/setup');
 const { getPort } = require('../src/core/helpers');
 const { ValidationError } = require('../src/core/validation');
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 const port = getPort();
 const { log } = console;
